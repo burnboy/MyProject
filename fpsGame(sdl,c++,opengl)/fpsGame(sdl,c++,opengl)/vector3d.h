@@ -35,7 +35,7 @@ public:
 
 	//cout < vec;
 	//vec += vec2;
-	friend
+	friend std::ostream& operator<<(std::ostream& out, const vector3d& vec);
 
 	~vector3d();
 };
