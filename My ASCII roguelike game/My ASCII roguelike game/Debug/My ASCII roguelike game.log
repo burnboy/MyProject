@@ -1,0 +1,8 @@
+﻿  Level.cpp
+d:\myproject\my ascii roguelike game\my ascii roguelike game\level.cpp(35): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\myproject\my ascii roguelike game\my ascii roguelike game\level.cpp(37): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\myproject\my ascii roguelike game\my ascii roguelike game\level.cpp(83): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\myproject\my ascii roguelike game\my ascii roguelike game\level.cpp(139): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\myproject\my ascii roguelike game\my ascii roguelike game\level.cpp(202): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  My ASCII roguelike game.vcxproj -> D:\MyProject\My ASCII roguelike game\Debug\My ASCII roguelike game.exe
+  My ASCII roguelike game.vcxproj -> D:\MyProject\My ASCII roguelike game\Debug\My ASCII roguelike game.pdb (Full PDB)
