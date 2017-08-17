@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>//string 은 네임스페이스를 선언해주어야한다
 
-//1:34:16
+//1:40:47
 class ScoreBoard
 {
 private:
@@ -78,11 +78,32 @@ public:
 	
 	}
 
-	~ScoreBoard() {}
+	~ScoreBoard()
+	{
+		if (firstScore != NULL)
+		{
+			delete firstScore;
+		}
+	
+	}
+
 	void AddScore(int score, const char* time)
 	{
-
+		if (firstScore == NULL)
+		{
+			firstScore = new Score(score, time);
+		}
+		else
+		{
+			Score* newScore = new Score(score, time);
+			if (firstScore->Insert(newScore) == true)
+			{
+				firstScore = newScore;
+			}
+		}
 	}
+
+
 	/*void Test()
 	{
 		firstScore = new Score(100, "hammertime");
