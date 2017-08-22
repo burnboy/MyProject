@@ -4,14 +4,8 @@ d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(45): warning C4244: '초�
 d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(46): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(100): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(101): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(106): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(106): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
 d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(109): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\myproject\myfirstgame\myfirstgame\maincharacter.cpp(109): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Environment.cpp
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
-  MyFirstGame.cpp
-  Main.cpp
-  코드를 생성하고 있습니다...
   MyFirstGame.vcxproj -> D:\MyProject\MyFirstGame\Debug\MyFirstGame.exe
   MyFirstGame.vcxproj -> D:\MyProject\MyFirstGame\Debug\MyFirstGame.pdb (Full PDB)

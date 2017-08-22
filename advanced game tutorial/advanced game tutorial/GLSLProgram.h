@@ -14,6 +14,9 @@ public:
 	void linkShaders();
 
 private:
+
+	void complieShader(const std::string &filePath,GLuint &id);
+
 	GLuint _programID;
 
 	GLuint _vertexShaderID;
