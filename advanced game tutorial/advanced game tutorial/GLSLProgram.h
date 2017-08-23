@@ -13,7 +13,12 @@ public:
 
 	void linkShaders();
 
+	void addAttribute(const std::string& attributeName);
+
+
 private:
+
+	int _numAttributes;
 
 	void complieShader(const std::string &filePath,GLuint &id);
 
@@ -21,5 +26,6 @@ private:
 
 	GLuint _vertexShaderID;
 	GLuint _fragmentShaderID;
+
 };
 

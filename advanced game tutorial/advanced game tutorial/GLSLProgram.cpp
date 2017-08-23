@@ -15,6 +15,10 @@ GLSLProgram::~GLSLProgram()
 {
 
 }
+void GLSLProgram::addAttribute(const std::string& attributeName)
+{
+
+}
 
 void GLSLProgram:: compileShaders(const std::string &vertexShaderFilePath, const std::string &gragmentShaderFilepath)
 {
@@ -39,7 +43,48 @@ void GLSLProgram:: compileShaders(const std::string &vertexShaderFilePath, const
 
 void GLSLProgram::linkShaders()
 {
+	//vertex and fragment shaders are successfully compiled
+	//now time to link them together into a program
+	//get a program object
+	_programID = glCreateProgram();
 
+	//attach our shaders to our program
+	glAttachShader(_programID, _vertexShaderID);
+	glAttachShader(_programID, _fragmentShaderID);
+
+	//link our program
+	glLinkProgram(_programID);
+
+	//note different functions here:glgetprogram* instead of glgetshader
+	GLint isLinked = 0;
+	glGetProgramiv(_programID, GL_LINK_STATUS, (int*)&isLinked);
+	if (isLinked==GL_FALSE)
+	{
+		GLint maxLength = 0;
+		glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
+
+		//maxlength에 널 캐릭터가 포함
+		std::vector<char>errorLog(maxLength);
+		glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
+
+		//더이상 프로그램이 필요없음
+		glDeleteProgram(_programID);
+		
+		//셰이더 누수를 막음
+		glDeleteShader(_vertexShaderID);
+		glDeleteShader(_fragmentShaderID);
+
+
+		std::printf("%s\n", &(errorLog[0]));
+		fatalError("shader failed to link");
+
+	}
+
+	//always detach shaders after a successful link
+	glDetachShader(_programID, _vertexShaderID);
+	glDetachShader(_programID, _fragmentShaderID);
+	glDeleteShader(_vertexShaderID);
+	glDeleteShader(_fragmentShaderID);
 }
 
 void GLSLProgram::complieShader(const std::string &filePath, GLuint &id)
