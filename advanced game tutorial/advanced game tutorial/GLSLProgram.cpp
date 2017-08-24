@@ -5,17 +5,13 @@
 
 #include<fstream>
 
-GLSLProgram::GLSLProgram():_programID(0),_vertexShaderID(0),_fragmentShaderID(0)
+GLSLProgram::GLSLProgram():_numAttributes(0), _programID(0),_vertexShaderID(0),_fragmentShaderID(0)
 {
 
 }
 
 
 GLSLProgram::~GLSLProgram()
-{
-
-}
-void GLSLProgram::addAttribute(const std::string& attributeName)
 {
 
 }
@@ -85,6 +81,12 @@ void GLSLProgram::linkShaders()
 	glDetachShader(_programID, _fragmentShaderID);
 	glDeleteShader(_vertexShaderID);
 	glDeleteShader(_fragmentShaderID);
+}
+
+void GLSLProgram::addAttribute(const std::string& attributeName)
+{
+	glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
+
 }
 
 void GLSLProgram::complieShader(const std::string &filePath, GLuint &id)

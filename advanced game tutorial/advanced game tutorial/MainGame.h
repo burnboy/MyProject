@@ -1,6 +1,8 @@
 #pragma once
 #include<SDL/SDL.h>
 #include<GL\glew.h>
+
+#include"GLSLProgram.h"
 #include"Sprite.h"
 
 enum class GameState {PLAY,EXIT};
@@ -18,6 +20,7 @@ public:
 private:
 
 	void initSystems();
+	void initShaders();
 	void gameLoop();
 
 	void ProcessInput();
@@ -28,6 +31,8 @@ private:
 	int _screenHeight;
 	GameState _gameState;
 	Sprite _sprite;
+
+	GLSLProgram _colorProgram;
 
 };
 

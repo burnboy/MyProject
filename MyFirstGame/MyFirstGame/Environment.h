@@ -7,6 +7,7 @@
 
 class CEnvironment
 {
+	SDL_Event* events;
 	//¿ÃπÃ¡ˆ
 	CSprite* background[4][7];
 	//Tree* tree;
@@ -19,7 +20,7 @@ public:
 
 	void DrawBack();
 	void DrawFront();
-
+	void Update();
 
 };
 

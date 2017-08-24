@@ -83,6 +83,7 @@ public:
 		if (firstScore != NULL)
 		{
 			delete firstScore;
+			firstScore = NULL;
 		}
 	
 	}

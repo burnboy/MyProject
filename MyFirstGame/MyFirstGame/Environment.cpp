@@ -12,7 +12,11 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *CameraX,float
 		}
 	}
 
-	trees.push_back(new Tree(300, 300, CameraX, CameraY, csdl_setup));
+	events = csdl_setup->GetMainEvent();
+
+	//for(int i=0;i<100;i++)
+	//trees.push_back(new Tree(300+(50*i), 300, CameraX, CameraY, csdl_setup));
+
 	//trees[0];
 	//trees[1];
 
@@ -30,6 +34,12 @@ CEnvironment::~CEnvironment()
 			delete background[i][j];
 		}
 	}
+
+	for (std::vector<Tree*>::iterator i = trees.begin(); i != trees.end(); ++i)
+	{
+		delete (*i);
+	}
+
 	trees.clear();
 
 }
@@ -60,4 +70,8 @@ void CEnvironment::DrawFront()
 	}
 }
 
+void CEnvironment::Update()
+{
+	if(events)
+}
 

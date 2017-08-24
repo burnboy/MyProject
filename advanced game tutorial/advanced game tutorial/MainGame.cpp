@@ -53,6 +53,13 @@ void MainGame::initSystems()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 
+	initShaders();
+}
+
+void MainGame::initShaders()
+{
+	_colorProgram.compileShaders("")
+
 }
 
 void MainGame::gameLoop()
