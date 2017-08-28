@@ -11,8 +11,13 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *CameraX,float
 			background[i][j] = new CSprite(csdl_setup->Getrenderer(), "data/environment/background.png", ScreenWidth*i, ScreenHeight*j, ScreenWidth, ScreenHeight, CameraX, CameraY);
 		}
 	}
+	//events = csdl_setup->GetMainEvent();
+	CSDL_setup* csdl_setup;
+	int* CameraX;
+	int* CameraY;
 
-	events = csdl_setup->GetMainEvent();
+
+	OnePressed = false;
 
 	//for(int i=0;i<100;i++)
 	//trees.push_back(new Tree(300+(50*i), 300, CameraX, CameraY, csdl_setup));
@@ -72,6 +77,25 @@ void CEnvironment::DrawFront()
 
 void CEnvironment::Update()
 {
-	if(events)
+	if (events->type == SDL_KEYDOWN)
+	{
+		if (!OnePressed&&events->key.keysym.sym == SDLK_1)
+		{
+	/*		std::cout << "ONE" << std::endl;*/
+			trees.push_back(new Tree(10,10, ))
+			OnePressed = true;
+		}
+	}
+
+	if (events->type == SDL_KEYUP)
+	{
+		if (OnePressed&&events->key.keysym.sym == SDLK_1)
+		{
+			OnePressed = false;
+		};
+	}
+
+
+
 }
 

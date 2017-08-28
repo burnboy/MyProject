@@ -7,11 +7,18 @@
 
 class CEnvironment
 {
-	SDL_Event* events;
+
+	//SDL_Event* events;
+	CSDL_setup* csdl_setup;
+	int* CameraX;
+	int* CameraY;
+
 	//ÀÌ¹ÌÁö
 	CSprite* background[4][7];
 	//Tree* tree;
 	vector<Tree*>trees;
+
+	bool OnePressed;
 
 
 public:
