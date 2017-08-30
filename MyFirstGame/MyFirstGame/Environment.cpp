@@ -2,8 +2,14 @@
 #include "Environment.h"
 
 
-CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *CameraX,float *CameraY, CSDL_setup*csdl_setup)
+CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *passed_CameraX,float *passed_CameraY,CSDL_setup*passed_csdl_setup)
 {
+
+	csdl_setup = passed_csdl_setup;
+
+	CameraX= passed_CameraX;
+	CameraY= passed_CameraY;
+
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 7; j++)
@@ -12,9 +18,9 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *CameraX,float
 		}
 	}
 	//events = csdl_setup->GetMainEvent();
-	CSDL_setup* csdl_setup;
-	int* CameraX;
-	int* CameraY;
+
+	//int* CameraX;
+	//int* CameraY;
 
 
 	OnePressed = false;
@@ -77,19 +83,19 @@ void CEnvironment::DrawFront()
 
 void CEnvironment::Update()
 {
-	if (events->type == SDL_KEYDOWN)
+	if (csdl_setup->GetMainEvent()->type == SDL_KEYDOWN)
 	{
-		if (!OnePressed&&events->key.keysym.sym == SDLK_1)
+		if (!OnePressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
 		{
 	/*		std::cout << "ONE" << std::endl;*/
-			trees.push_back(new Tree(10,10, ))
+			trees.push_back(new Tree(-*CameraX+275, -*CameraY+90, CameraX, CameraY, csdl_setup));
 			OnePressed = true;
 		}
 	}
 
-	if (events->type == SDL_KEYUP)
+	if (csdl_setup->GetMainEvent()->type == SDL_KEYUP)
 	{
-		if (OnePressed&&events->key.keysym.sym == SDLK_1)
+		if (OnePressed&&csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
 		{
 			OnePressed = false;
 		};

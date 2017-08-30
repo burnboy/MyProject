@@ -11,9 +11,9 @@ MainCharacter::MainCharacter(CSDL_setup*passed_SDL_Setup,int *passed_MouseX,int 
 	MouseX = passed_MouseX;
 	MouseY = passed_MouseY;
 
-	int TemporaryCamera = 0;
+	//int TemporaryCamera = 0;
 
-	soldier = new CSprite(csdl_setup->Getrenderer(), "data/solpoFriends.png", 300, 250, 100, 100, CameraX, CameraY);
+	soldier = new CSprite(csdl_setup->Getrenderer(), "data/solpoFriends.png", 300, 250, 120, 120, CameraX, CameraY);
 	soldier->SetUpAnimation(4, 4);
 	soldier->SetOrigin(soldier->GetWidth() / 2.0f, soldier->GetHeight());//중심 잡아주기
 

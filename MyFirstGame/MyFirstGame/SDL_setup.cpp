@@ -4,6 +4,8 @@ using namespace std;
 
 CSDL_setup::CSDL_setup(bool* quit,int ScreenWidth,int ScreenHeight)
 {
+	SDL_Init(SDL_INIT_VIDEO);
+
 	window = NULL;
 	window = SDL_CreateWindow("first game", 100, 100, ScreenWidth, ScreenHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);//화면크기
 
