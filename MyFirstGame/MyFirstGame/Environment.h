@@ -4,6 +4,7 @@
 #include"SDL_setup.h"
 #include"Tree.h"
 #include<vector>
+#include<fstream>
 
 class CEnvironment
 {
@@ -29,11 +30,12 @@ public:
 	void DrawFront();
 	void Update();
 
+	void SaveToFile();
+
 	enum ModeType
 	{
 		GamePlay,
-	LevelCreation,
-
+	LevelCreation
 
 	};
 

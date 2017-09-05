@@ -17,6 +17,11 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *passed_Camera
 			background[i][j] = new CSprite(csdl_setup->Getrenderer(), "data/environment/background.png", ScreenWidth*i, ScreenHeight*j, ScreenWidth, ScreenHeight, CameraX, CameraY);
 		}
 	}
+
+
+	Mode = GamePlay;
+
+
 	//events = csdl_setup->GetMainEvent();
 
 	//int* CameraX;
@@ -81,21 +86,86 @@ void CEnvironment::DrawFront()
 	}
 }
 
+void CEnvironment::SaveToFile()
+{
+	std::ofstream LoadedFile;
+	LoadedFile.open("data/stageLayout.txt");
+	LoadedFile << "파일을 저장중입니다!" << std::endl;
+	LoadedFile.close();
+
+	std::cout << "레벨 저장됨!" << std::endl;
+}
+
 void CEnvironment::Update()
 {
+	if (Mode == LevelCreation)
+	{
+		if (csdl_setup->GetMainEvent()->type == SDL_KEYDOWN)
+		{
+			if (!OnePressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F11)
+			{
+				if (Mode == LevelCreation)
+				{
+					SaveToFile();
+					OnePressed = true;
+				}
+
+		}
+
+		if (csdl_setup->GetMainEvent()->type == SDL_KEYUP)
+		{
+			if (OnePressed&&csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F11)
+			{
+				OnePressed = false;
+			};
+		}
+
+
+		if (csdl_setup->GetMainEvent()->type == SDL_KEYDOWN)
+		{
+			if (!OnePressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
+			{
+				/*		std::cout << "ONE" << std::endl;*/
+				trees.push_back(new Tree(-*CameraX + 275, -*CameraY + 90, CameraX, CameraY, csdl_setup));
+				OnePressed = true;
+			}
+		}
+
+		if (csdl_setup->GetMainEvent()->type == SDL_KEYUP)
+		{
+			if (OnePressed&&csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
+			{
+				OnePressed = false;
+			};
+		}
+	}
+
+
+
+
 	if (csdl_setup->GetMainEvent()->type == SDL_KEYDOWN)
 	{
-		if (!OnePressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
+		if (!OnePressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F12)
 		{
-	/*		std::cout << "ONE" << std::endl;*/
-			trees.push_back(new Tree(-*CameraX+275, -*CameraY+90, CameraX, CameraY, csdl_setup));
+			if (Mode == LevelCreation)
+			{
+				std::cout << "LevelCreation 끄기" << std::endl;
+				Mode = GamePlay;
+			}
+
+			else if (Mode == GamePlay)
+			{
+				std::cout << "LevelCreation 킴" << std::endl;
+				Mode = LevelCreation;
+			}
+
 			OnePressed = true;
 		}
 	}
 
 	if (csdl_setup->GetMainEvent()->type == SDL_KEYUP)
 	{
-		if (OnePressed&&csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1)
+		if (OnePressed&&csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F12)
 		{
 			OnePressed = false;
 		};
