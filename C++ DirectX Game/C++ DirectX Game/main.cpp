@@ -60,10 +60,12 @@ private:
 	~Score()
 	{
 		free(time);
+		if (nextScore != NULL)
+		{
+			delete nextScore;
+			nextScore = NULL;
+		}
 	}
-
-
-
 
 private:
 	int score;
@@ -73,10 +75,9 @@ private:
 };
 
 public:
-	ScoreBoard():firstScore(NULL)
-	{
-	
-	}
+	ScoreBoard():
+		firstScore(NULL)
+	{}
 
 	~ScoreBoard()
 	{
@@ -119,6 +120,6 @@ public:
 void main()		
 {		
 	ScoreBoard board;
-	board.Test();
+	//board.Test();
 }
 

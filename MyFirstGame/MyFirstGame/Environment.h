@@ -19,7 +19,7 @@ class CEnvironment
 	vector<Tree*>trees;
 
 	bool OnePressed;
-
+	int Mode;
 
 public:
 	CEnvironment(int ScreenWidth, int ScreenHeight, float *CameraX, float *CameraY, CSDL_setup* csdl_setup);
@@ -28,6 +28,14 @@ public:
 	void DrawBack();
 	void DrawFront();
 	void Update();
+
+	enum ModeType
+	{
+		GamePlay,
+	LevelCreation,
+
+
+	};
 
 };
 
