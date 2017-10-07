@@ -11,6 +11,7 @@ public:
 	vector3d();
 	vector3d(float a,float b);
 	vector3d(float a,float b,float c);
+	~vector3d() {};
 
 	float dotProduct(const vector3d& vec2);
 	vector3d crossProduct(const vector3d& vec2);
@@ -25,19 +26,21 @@ public:
 	void changeY(float a);
 	void changeZ(float a);
 
-	vector3d& operator+(const vector3d& vec2);
-	vector3d& operator-(const vector3d& vec2);
-	vector3d& operator*(float num);
-	vector3d& operator/(float num);
+	vector3d operator+(const vector3d& vec2);
+	vector3d operator-(const vector3d& vec2);
+	vector3d operator*(float num);
+	vector3d operator/(float num);
+
+	vector3d& operator+=(const vector3d& vec2);
+	vector3d& operator-=(const vector3d& vec2);
+	vector3d& operator*=(float num);
+	vector3d& operator/=(float num);
 
 	bool operator==(const vector3d vec2);
 	bool operator!=(const vector3d vec2);
 
-	//cout < vec;
-	//vec += vec2;
-	friend std::ostream& operator<<(std::ostream& out, const vector3d& vec);
+	friend std::ostream& operator<<(std::ostream& out, const vector3d& vec2);
 
-	~vector3d();
 };
 
 #endif
