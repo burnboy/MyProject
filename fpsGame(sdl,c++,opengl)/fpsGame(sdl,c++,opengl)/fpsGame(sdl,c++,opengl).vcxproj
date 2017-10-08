@@ -142,10 +142,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="collisionplane.cpp" />
+    <ClCompile Include="collisionsphere.cpp" />
+    <ClCompile Include="func.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="vector3d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="collisionplane.h" />
+    <ClInclude Include="collisionsphere.h" />
+    <ClInclude Include="func.h" />
     <ClInclude Include="vector3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
