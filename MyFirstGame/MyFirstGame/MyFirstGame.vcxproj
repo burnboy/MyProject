@@ -144,6 +144,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CollisionRectangle.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainCharacter.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CollisionRectangle.cpp" />
     <ClCompile Include="Environment.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainCharacter.cpp" />

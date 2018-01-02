@@ -1,23 +1,33 @@
 #include"Main.h"
 #include"MainCharacter.h"
-#include"stdafx.h"
+//#include"stdafx.h"
 //#include"SDL_setup.h"
 
 using namespace std;
 
 //26part 5:48
+//32part 7:45
 
 CMain::CMain(int passed_ScreenWidth,int passed_ScreenHeight)
 {
+	//카메라,시점부분
+	CameraX = 300;
+	CameraY = 250;
+
 	ScreenWidth = passed_ScreenWidth;
 	ScreenHeight = passed_ScreenHeight;
 
 	quit = false;
 	csdl_setup = new CSDL_setup(&quit, ScreenWidth, ScreenHeight);
 
-	//카메라,시점부분
-	CameraX = 300;
-	CameraY = 250;
+	//for (int i = 0; i < 4; i++)
+	//{
+	//	for(int j=0;j<7;j++)
+	//	{
+	//		
+	//	}
+
+	//}
 
 
 	ForestArea = new CEnvironment(ScreenWidth, ScreenHeight, &CameraX, &CameraY, csdl_setup);

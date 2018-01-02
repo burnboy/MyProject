@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "SDL_setup.h"
 using namespace std;
 

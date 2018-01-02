@@ -13,7 +13,7 @@ MainCharacter::MainCharacter(CSDL_setup*passed_SDL_Setup,int *passed_MouseX,int 
 
 	//int TemporaryCamera = 0;
 
-	soldier = new CSprite(csdl_setup->Getrenderer(), "data/solpoFriends.png", 300, 250, 120, 120, CameraX, CameraY);
+	soldier = new CSprite(csdl_setup->Getrenderer(), "data/solpoFriends.png", 300, 250, 120, 120, CameraX, CameraY,CCollisionRectangle(0,0,100,120));
 	soldier->SetUpAnimation(4, 4);
 	soldier->SetOrigin(soldier->GetWidth() / 2.0f, soldier->GetHeight());//중심 잡아주기
 
@@ -119,13 +119,13 @@ void MainCharacter::UpdateControls()
 			if (/*soldier->GetX()*/*CameraX != Follow_Point_X)
 			{
 				/*soldier->SetX(soldier->GetX() - ((soldier->GetX() - Follow_Point_X) / distance)*1.5f);*/
-				*CameraX = *CameraX - (((*CameraX - Follow_Point_X) / distance)*2.0f);
+				*CameraX = *CameraX - (((*CameraX - Follow_Point_X) / distance)*2.7f);
 			}
 
 			if (/*soldier->GetY()*/*CameraY != Follow_Point_Y)
 			{
 				/*soldier->SetY(soldier->GetY() - ((soldier->GetY() - Follow_Point_Y) / distance)*1.5f);*/
-				*CameraY = *CameraY - (((*CameraY - Follow_Point_Y) / distance)*2.0f);
+				*CameraY = *CameraY - (((*CameraY - Follow_Point_Y) / distance)*2.7f);
 			}
 		}
 		else

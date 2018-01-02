@@ -1,20 +1,29 @@
-#include "stdafx.h"
+//#include"stdAfx.h"
 #include "Sprite.h"
 using namespace std;
 
-CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, int w, int h, float *passed_CameraX, float *passed_CameraY)
+CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, int w, int h, float *passed_CameraX, float *passed_CameraY, CCollisionRectangle passed_CollisionRect)
 {
-	CameraX = passed_CameraX;
-	CameraY = passed_CameraY;
-
+	CollisionRect = passed_CollisionRect;
 	renderer = passed_renderer;
 	image = NULL;
 	image = IMG_LoadTexture(renderer,FilePath.c_str());
 
 	if (image == NULL)
 	{
-		cout <<FilePath.c_str()<< "파일을 로드할수 없습니다!" << endl;
+		cout << FilePath.c_str() << "파일을 로드할수 없습니다!" << endl;
 	}
+
+	CollisionImage = NULL;
+
+	CollisionImage = IMG_LoadTexture(renderer,"data/Debug/CollisionBox.png");
+
+	if (CollisionImage == NULL)
+	{
+		cout <<"CollisionImage"<< "파일을 로드할수 없습니다!" << endl;
+	}
+
+
 
 	rect.x = x;
 	rect.y = y;
@@ -37,6 +46,10 @@ CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, in
 	CurrentFrame = 0;
 	Amount_Frame_X = 0;
 	Amount_Frame_Y = 0;
+
+	CameraX = passed_CameraX;
+	CameraY = passed_CameraY;
+
 
 	/*soldier_image = NULL;
 	soldier_image = IMG_LoadTexture(csdl_setup->Getrenderer(), "data/solpoFriends.png");
@@ -97,10 +110,13 @@ void CSprite::Draw()
 	Camera.x = rect.x + *CameraX;
 	Camera.y = rect.y + *CameraY;
 
-	Camera.w = rect.w;
-	Camera.h = rect.h;
+	//Camera.w = rect.w;
+	//Camera.h = rect.h;
 
 	SDL_RenderCopy(renderer,image, &crop, &Camera);
+
+	SDL_RenderCopy(renderer, CollisionImage,NULL, &CollisionRect.GetRectangle());
+
 }
 
 void CSprite::SetX(float X)

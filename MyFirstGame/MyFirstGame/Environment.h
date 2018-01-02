@@ -1,10 +1,12 @@
 #pragma once
-#include"Sprite.h"
 #include"stdafx.h"
-#include"SDL_setup.h"
-#include"Tree.h"
 #include<vector>
+#include"SDL_setup.h"
+#include"Sprite.h"
+#include"Tree.h"
 #include<fstream>
+#include<sstream>
+#include<string>
 
 class CEnvironment
 {
@@ -28,9 +30,11 @@ public:
 
 	void DrawBack();
 	void DrawFront();
+
 	void Update();
 
 	void SaveToFile();
+	void LoadFromFile();
 
 	enum ModeType
 	{

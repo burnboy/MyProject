@@ -1,11 +1,18 @@
 #pragma once
-using namespace std;
+#include"stdafx.h"
+#include"CollisionRectangle.h"
 class CSprite
 {
+	CCollisionRectangle CollisionRect;
+
+
 	//¿ÃπÃ¡ˆ
 	SDL_Rect Camera;
 
 	SDL_Texture* image;
+	SDL_Texture* CollisionImage;
+
+
 	SDL_Rect rect;
 	SDL_Renderer* renderer;
 
@@ -31,7 +38,7 @@ class CSprite
 
 public:
 
-	CSprite(SDL_Renderer*passed_renderer,string FilePath, int x,int y,int w,int h,float *passed_CameraX,float *passed_CameraY );
+	CSprite(SDL_Renderer*passed_renderer,string FilePath, int x,int y,int w,int h,float *CameraX,float *CameraY,CCollisionRectangle passed_CollisionRect );
 	~CSprite(void);
 
 	void Draw();
