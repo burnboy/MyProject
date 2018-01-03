@@ -1,10 +1,10 @@
 #pragma once
 #include"stdafx.h"
 #include"CollisionRectangle.h"
+
 class CSprite
 {
 	CCollisionRectangle CollisionRect;
-
 
 	//¿ÃπÃ¡ˆ
 	SDL_Rect Camera;
@@ -38,7 +38,7 @@ class CSprite
 
 public:
 
-	CSprite(SDL_Renderer*passed_renderer,string FilePath, int x,int y,int w,int h,float *CameraX,float *CameraY,CCollisionRectangle passed_CollisionRect );
+	CSprite(SDL_Renderer*passed_renderer,std::string FilePath, int x,int y,int w,int h,float *CameraX,float *CameraY,CCollisionRectangle passed_CollisionRect );
 	~CSprite(void);
 
 	void Draw();
@@ -51,15 +51,19 @@ public:
 
 	float GetX();
 	float GetY();
+	void SetWidth(int W);
+	void SetHeight(int H);
 
 	int GetWidth();
 	int GetHeight();
 	void SetOrigin(float X, float Y);
-
-	void SetWidth(int W);
-	void SetHeight(int H);
-
 	void PlayAnimation(int BeginFrame, int EndFrame, int Row, float Speed);
 	void SetUpAnimation(int passed_Amount_X, int passed_Amount_Y);
+
+	bool isColliding(CCollisionRectangle theCollider);
+
+	CCollisionRectangle GetCollisionRect() { return CollisionRect; }
+	SDL_Rect GetPositionRect() { return rect; }
+
 };
 

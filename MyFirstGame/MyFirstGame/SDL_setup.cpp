@@ -1,6 +1,5 @@
-//#include "stdafx.h"
+#include "stdAfx.h"
 #include "SDL_setup.h"
-using namespace std;
 
 CSDL_setup::CSDL_setup(bool* quit,int ScreenWidth,int ScreenHeight)
 {
@@ -11,7 +10,7 @@ CSDL_setup::CSDL_setup(bool* quit,int ScreenWidth,int ScreenHeight)
 
 	if (window == NULL)
 	{
-		cout << "윈도우창이 만들어지지 않았음" << endl;
+		std::cout << "윈도우창이 만들어지지 않았음" << std::endl;
 		*quit = true;
 	}
 

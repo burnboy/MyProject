@@ -9,6 +9,9 @@ class Tree
 	CSprite* Crown;
 	CSprite* Trunk;
 
+	float *CameraX;
+	float *CameraY;
+
 public:
 	Tree(int x,int y,float *CameraX, float *CameraY, CSDL_setup* csdl_setup);
 	~Tree(void);
@@ -19,6 +22,8 @@ public:
 	int GetX();
 	int GetY();
 
+	CSprite* GetCrown(){ return Crown; }
+	CSprite* GetTrunk(){ return Trunk; }
 
 };
 

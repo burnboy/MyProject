@@ -16,13 +16,11 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *passed_Camera
 		}
 	}
 
-
 	Mode = LevelCreation;
 
 	//events = csdl_setup->GetMainEvent();
 	//int* CameraX;
 	//int* CameraY;
-
 	LoadFromFile();
 
 	OnePressed = false;
@@ -37,7 +35,7 @@ CEnvironment::CEnvironment(int ScreenWidth,int ScreenHeight,float *passed_Camera
 }
 
 
-CEnvironment::~CEnvironment()
+CEnvironment::~CEnvironment(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -66,7 +64,8 @@ void CEnvironment::DrawBack()
 			background[i][j]->Draw();
 		}
 	}
-	for (vector<Tree*>::iterator i = trees.begin(); i != trees.end(); i++)
+
+	for (std::vector<Tree*>::iterator i = trees.begin(); i != trees.end(); ++i)
 	{
 		(*i)->DrawTrunk();
 	}
@@ -232,22 +231,18 @@ void CEnvironment::Update()
 				{
 					if (trees.size() > 0)
 					{
-						int count = 0;
+						//int count = 0;
+						delete trees[trees.size() - 1];
 
-
-						for (std::vector<Tree*>::iterator i = trees.begin(); i != trees.end(); ++i)
+			/*			for (std::vector<Tree*>::iterator i = trees.begin(); i != trees.end(); ++i)
 						{
 							if (count == trees.size())
 								delete(*i);
 
 								count++;
-						}
-
-
+						}*/
 						trees.pop_back();
 						//delete trees[trees.size()];
-
-
 					}
 						OnePressed = true;
 					

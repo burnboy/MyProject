@@ -2,20 +2,26 @@
 #include"stdafx.h"
 #include"Sprite.h"
 #include"SDL_setup.h"
+#include"Environment.h"
+
 #include<math.h>
 
 
 class MainCharacter
 {
-	int *MouseX;
-	int *MouseY;
+	CEnvironment* Environment;
+	void UpdateAnimation();
+	void UpdateControls();
 
 	float *CameraX;
 	float *CameraY;
 
-	CSprite* soldier;
+	int *MouseX;
+	int *MouseY;
+
 	CSDL_setup *csdl_setup;
-	
+	CSprite* soldier;
+
 	int timeCheck;
 
 	bool Follow;
@@ -25,18 +31,13 @@ class MainCharacter
 	float distance;
 	bool stopAnimation;
 
-	void UpdateAnimation();
-	void UpdateControls();
-
 public:
-	MainCharacter(CSDL_setup *passed_SDL_Setup, int *passed_MouseX, int *passed_MouseY,float *passed_CameraX,float *passed_CameraY);
-	~MainCharacter();
+	MainCharacter(CSDL_setup* passed_SDL_Setup, int *passed_MouseX, int *passed_MouseY,float *CameraX,float *CameraY, CEnvironment*passed_Environment);
+	~MainCharacter(void);
 
 	double GetDistance(int X1, int Y1, int X2, int Y2);
+
 	void Update();
-
 	void Draw();
-
-
 };
 

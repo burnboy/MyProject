@@ -15,7 +15,8 @@ public:
 	void SetRectangle(int x, int y, int w, int h);
 	SDL_Rect GetRectangle() { return CollisionRect; }
 
-	void SetX();
+	void SetX(int x) { CollisionRect.x = x + OffsetX; }
+	void SetY(int y) { CollisionRect.y = y + OffsetY; }
 
 };
 

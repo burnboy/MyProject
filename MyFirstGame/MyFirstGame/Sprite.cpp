@@ -1,8 +1,6 @@
-//#include"stdAfx.h"
 #include "Sprite.h"
-using namespace std;
 
-CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, int w, int h, float *passed_CameraX, float *passed_CameraY, CCollisionRectangle passed_CollisionRect)
+CSprite::CSprite(SDL_Renderer*passed_renderer,std:: string FilePath, int x, int y, int w, int h, float *passed_CameraX, float *passed_CameraY, CCollisionRectangle passed_CollisionRect)
 {
 	CollisionRect = passed_CollisionRect;
 	renderer = passed_renderer;
@@ -11,7 +9,7 @@ CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, in
 
 	if (image == NULL)
 	{
-		cout << FilePath.c_str() << "파일을 로드할수 없습니다!" << endl;
+		std::cout << FilePath.c_str() << "파일을 로드할수 없습니다!" <<std:: endl;
 	}
 
 	CollisionImage = NULL;
@@ -20,10 +18,8 @@ CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, in
 
 	if (CollisionImage == NULL)
 	{
-		cout <<"CollisionImage"<< "파일을 로드할수 없습니다!" << endl;
+		std::cout <<"CollisionImage"<< "파일을 로드할수 없습니다!" <<std:: endl;
 	}
-
-
 
 	rect.x = x;
 	rect.y = y;
@@ -49,7 +45,11 @@ CSprite::CSprite(SDL_Renderer*passed_renderer, string FilePath, int x, int y, in
 
 	CameraX = passed_CameraX;
 	CameraY = passed_CameraY;
-
+	
+	Camera.x = rect.x + *CameraX;
+	Camera.y = rect.y + *CameraY;
+	Camera.w = rect.w;
+	Camera.h = rect.h;
 
 	/*soldier_image = NULL;
 	soldier_image = IMG_LoadTexture(csdl_setup->Getrenderer(), "data/solpoFriends.png");
@@ -98,24 +98,23 @@ CSprite::~CSprite(void)
 	SDL_DestroyTexture(image);
 }
 
-
-void CSprite::DrawSteady()
-{
-	SDL_RenderCopy(renderer, image, &crop, &rect);
-}
-
-
 void CSprite::Draw()
 {
 	Camera.x = rect.x + *CameraX;
 	Camera.y = rect.y + *CameraY;
 
-	//Camera.w = rect.w;
-	//Camera.h = rect.h;
+	CollisionRect.SetX(rect.x + *CameraX);
+	CollisionRect.SetY(rect.y + *CameraY);
 
 	SDL_RenderCopy(renderer,image, &crop, &Camera);
 
 	SDL_RenderCopy(renderer, CollisionImage,NULL, &CollisionRect.GetRectangle());
+
+}
+void CSprite::DrawSteady()
+{
+	SDL_RenderCopy(renderer, image, &crop, &rect);
+	SDL_RenderCopy(renderer, CollisionImage, NULL, &CollisionRect.GetRectangle());
 
 }
 
@@ -180,4 +179,10 @@ int CSprite::GetHeight()
 	return rect.h;
 }
 
-
+bool CSprite::isColliding(CCollisionRectangle theCollider)
+{
+	return !(CollisionRect.GetRectangle().x + CollisionRect.GetRectangle().w<theCollider.GetRectangle().x ||
+		     CollisionRect.GetRectangle().y + CollisionRect.GetRectangle().h<theCollider.GetRectangle().y ||
+			 CollisionRect.GetRectangle().x >theCollider.GetRectangle().x + theCollider.GetRectangle().w ||
+			 CollisionRect.GetRectangle().y >theCollider.GetRectangle().y + theCollider.GetRectangle().h);
+}

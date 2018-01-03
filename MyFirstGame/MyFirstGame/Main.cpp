@@ -1,41 +1,23 @@
+#include"stdAfx.h"
 #include"Main.h"
-#include"MainCharacter.h"
-//#include"stdafx.h"
-//#include"SDL_setup.h"
 
-using namespace std;
-
-//26part 5:48
-//32part 7:45
 
 CMain::CMain(int passed_ScreenWidth,int passed_ScreenHeight)
 {
 	//카메라,시점부분
-	CameraX = 300;
-	CameraY = 250;
-
+	CameraX = 0;
+	CameraY = 0;
 	ScreenWidth = passed_ScreenWidth;
 	ScreenHeight = passed_ScreenHeight;
-
 	quit = false;
 	csdl_setup = new CSDL_setup(&quit, ScreenWidth, ScreenHeight);
 
-	//for (int i = 0; i < 4; i++)
-	//{
-	//	for(int j=0;j<7;j++)
-	//	{
-	//		
-	//	}
-
-	//}
-
-
 	ForestArea = new CEnvironment(ScreenWidth, ScreenHeight, &CameraX, &CameraY, csdl_setup);
 
-	MouseX = 300;
-	MouseY = 250;
+	MouseX = 0;
+	MouseY = 0;
 
-	soldier = new MainCharacter(csdl_setup, &MouseX, &MouseY,&CameraX,&CameraY);
+	soldier = new MainCharacter(csdl_setup, &MouseX, &MouseY,&CameraX,&CameraY,ForestArea);
 }
 
 CMain::~CMain(void)
@@ -51,14 +33,13 @@ void CMain::GameLoop(void)
 	{
 		csdl_setup->Begin();
 		SDL_GetMouseState(&MouseX, &MouseY);
-		
 		ForestArea->DrawBack();
-		soldier->Draw();
 
+		soldier->Draw();
 		soldier->Update();
+		ForestArea->Update();
 
 		ForestArea->DrawFront();
-
 		csdl_setup->End();
 	/*	SDL_RenderPresent(csdl_setup->Getrenderer());*/
 	}

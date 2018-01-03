@@ -19,14 +19,14 @@ class CEnvironment
 	//¿ÃπÃ¡ˆ
 	CSprite* background[4][7];
 	//Tree* tree;
-	vector<Tree*>trees;
+	std::vector<Tree*>trees;
 
 	bool OnePressed;
 	int Mode;
 
 public:
 	CEnvironment(int ScreenWidth, int ScreenHeight, float *CameraX, float *CameraY, CSDL_setup* csdl_setup);
-	~CEnvironment();
+	~CEnvironment(void);
 
 	void DrawBack();
 	void DrawFront();
@@ -40,8 +40,11 @@ public:
 	{
 		GamePlay,
 	LevelCreation
-
 	};
+
+	std::vector<Tree*>GetTrees() { return trees; }
+
+
 
 };
 
