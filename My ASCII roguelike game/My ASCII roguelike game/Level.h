@@ -10,8 +10,11 @@ class Level
 {
 	vector<string> _LevelData;
 	vector<Enemy> _enemies;
+
 	void processPlayerMove(Player &player,int targetX,int targetY);
 	void battleMonster(Player &player, int targetX, int targetY);
+
+	void processEnemyMove(Player &player, int enemyIndex,int targetX,int targetY);
 
 
 public:  

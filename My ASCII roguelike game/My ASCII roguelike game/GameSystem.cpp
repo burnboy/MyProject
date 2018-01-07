@@ -22,6 +22,7 @@ void GameSystem::playGame()
 	while (isDone != true) {
 		_level.print();
 		playerMove();
+		_level.updateEnemies(_player);
 
 	}
 

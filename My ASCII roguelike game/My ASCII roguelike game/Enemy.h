@@ -30,8 +30,10 @@ public:
 	int attack();
 	int takeDamage(int attack);//데미지판정
 	string getName() { return _name; }
+	char getTile() { return _tile; }
 
 	//AI 움직임 커맨드
 	char getMove(int playerX,int playerY);
+
 
 };

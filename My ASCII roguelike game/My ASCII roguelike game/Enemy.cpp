@@ -54,6 +54,10 @@ int Enemy::takeDamage(int attack)
 
 char Enemy::getMove(int playerX, int playerY)
 {
+	static default_random_engine randomEngine(time(NULL));
+	uniform_int_distribution<int>moveRoll(0, 6);
+
+
 	int distance;//거리
 	int dx = _x - playerX; //distance x
 	int dy = _y - playerY; //distance y
@@ -63,7 +67,7 @@ char Enemy::getMove(int playerX, int playerY)
 	distance = adx + ady;
 
 	if (distance <=5)
-	{
+	{// x축으로 움직임
 		if (adx < ady)
 		{
 			if (dx > 0)
@@ -72,13 +76,11 @@ char Enemy::getMove(int playerX, int playerY)
 				return'd';
 		}
 
-
-		else {
+		else {//y축으로 움직임
 			if (dy > 0)
 				return 'w';
 			else
 				return 's';
 		}
-
 	}
 }

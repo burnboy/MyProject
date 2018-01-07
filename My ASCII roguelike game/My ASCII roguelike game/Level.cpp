@@ -3,6 +3,7 @@
 #include<iostream>
 #include<cstdio>
 
+
 Level::Level()
 {
 }
@@ -136,10 +137,50 @@ void Level::tryMovePlayer(char input,Player &player)
 
 void Level::updateEnemies(Player &player)
 {
+	char aiMove;
+	int playerX,
+		playerY;
+
+	int enemyX;
+	int enemyY;
+
+	player.getPosition(playerX, playerY);
+
+
 	for (int i = 0; i < _enemies.size();i++)
 	{
+		aiMove=_enemies[i].getMove(playerX,playerY);
+		_enemies[i].getPosition(enemyX, enemyY);
+		switch (aiMove) {
 
+		case 'w'://위
+			processEnemyMove(player,i, enemyX, enemyY - 1);
+			break;
+
+		case 'a'://왼쪽
+			processEnemyMove(player,i, enemyX  - 1, enemyY);
+
+			break;
+
+		case's'://아래
+			processEnemyMove(player,i, enemyX, enemyY + 1);
+
+			break;
+
+		case'd'://오른쪽
+			processEnemyMove(player,i, enemyX + 1, enemyY);
+
+			break;
+
+	/*	default:*/
+			//case
+
+			//cout << "invalid input" << endl;
+			////system("PAUSE");
+			//break;
+		}
 	}
+
 }
 
 
@@ -214,6 +255,15 @@ void Level::battleMonster(Player &player, int targetX, int targetY)
 				setTile(targetX, targetY, '.');
 				print();
 				cout << "몬스터가 죽었습니다!\n";
+
+
+				//에너미 지워짐
+				_enemies[i] = _enemies.back();
+				_enemies.pop_back();
+				i--;
+
+
+
 				system("PAUSE");
 				player.addExperience(attackResult);
 	
@@ -223,7 +273,7 @@ void Level::battleMonster(Player &player, int targetX, int targetY)
 
 			//몬스터의 턴
 			attackRoll = _enemies[i].attack();
-			printf("몬스터  %s 가 플레이어를 공격했습니다. %d의 공격력으로\n", enemyName.c_str(), attackRoll);
+			printf("몬스터  %s 가 플레이어를 공격했습니다.%d의 공격력으로 말입니다\n", enemyName.c_str(), attackRoll);
 			attackResult = player.takeDamage(attackRoll);
 
 			if (attackResult != 0) {
@@ -237,5 +287,34 @@ void Level::battleMonster(Player &player, int targetX, int targetY)
 			system("PAUSE");
 			return;
 		}
+	}
+}
+
+void Level::processEnemyMove(Player &player, int enemyIndex, int targetX, int targetY)
+{
+	int playerX;
+	int playerY;
+	int enemyX;
+	int enemyY;
+
+	_enemies[enemyIndex].getPosition(enemyX, enemyY);
+	player.getPosition(playerX, playerY);
+
+	char moveTile = getTile(targetX, targetY);
+
+	switch (moveTile) {
+
+	case '.':
+		_enemies[enemyIndex].setPosition(targetX, targetY);
+		setTile(enemyX, enemyY, '.');
+		setTile(targetX, targetY, _enemies[enemyIndex].getTile());//애매한게gettile로 바꿔야하지 않나,.,
+		break;
+	case'@':
+		battleMonster(player,enemyX,enemyY);
+		break;
+
+
+	default:
+		break;
 	}
 }

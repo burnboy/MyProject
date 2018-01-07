@@ -9,8 +9,8 @@ Tree::Tree(int x_passed,int y_passed,float *passed_CameraX, float *passed_Camera
 	x = x_passed;
 	y = y_passed;
 
-	Trunk = new CSprite(csdl_setup->Getrenderer(), "data/environment/Trunk.png",x, y,64,64 ,CameraX, CameraY,CCollisionRectangle(0,120,43,26));
-	Crown = new CSprite(csdl_setup->Getrenderer(), "data/environment/Crown.png", x - 75, y - 115, 64, 64, CameraX, CameraY, CCollisionRectangle(0, 0, 64, 64));
+	Trunk = new CSprite(csdl_setup->Getrenderer(), "data/environment/Trunk.png",x, y,64,64 ,CameraX, CameraY,CCollisionRectangle(0,0,0,0));
+	Crown = new CSprite(csdl_setup->Getrenderer(), "data/environment/Crown.png", x - 75, y - 115, 128, 128, CameraX, CameraY, CCollisionRectangle(0, 0, 0, 0));
 
 }
 
