@@ -7,15 +7,18 @@ class collision
 {
 
 public:
-	bool raysphere(float xc, float yc, float zc,
+	static bool Raysphere(float xc, float yc, float zc,
 		float xd, float yd, float zd,
 		float xs, float ys, float zs,
 		float r, float* dist = NULL, coordinate *point = NULL);
 
-	bool rayplane(float nx,float ny,float nz,
-				  
-		
-	)
+	static bool Rayplane(float nx, float ny, float nz,
+
+		)
+		static float TriangleArea();
+		static bool SphereSphere();
+	static float PointDistance();
+	static bool SpherePlane();
 
 	collision();
 
