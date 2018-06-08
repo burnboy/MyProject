@@ -1,1 +1,8 @@
-﻿
+﻿  vector3d.cpp
+  main.cpp
+  func.cpp
+  collisionsphere.cpp
+  collisionplane.cpp
+  collision.cpp
+d:\myproject\fpsgame(sdl,c++,opengl)\fpsgame(sdl,c++,opengl)\collision.h(4): fatal error C1083: 포함 파일을 열 수 없습니다. 'objloader.h': No such file or directory
+  코드를 생성하고 있습니다...

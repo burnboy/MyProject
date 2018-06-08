@@ -6,7 +6,7 @@
 #include"Player.h"
 
 using namespace std;
-//1:40:02
+
 int main()
 {
 	//char input;

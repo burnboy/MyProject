@@ -13,7 +13,7 @@ MainCharacter::MainCharacter(CSDL_setup*passed_SDL_Setup,int *passed_MouseX,int 
 	MouseX = passed_MouseX;
 	MouseY = passed_MouseY;
 
-	soldier = new CSprite(csdl_setup->Getrenderer(), "data/solpoFriends.png", 300, 250, 120, 120, CameraX, CameraY,CCollisionRectangle(0,0,100,100));
+	soldier = new CSprite(csdl_setup->Getrenderer(), "data/robot.png", 300, 250, 120, 120, CameraX, CameraY,CCollisionRectangle(0,0,100,100));
 	soldier->SetUpAnimation(4, 4);
 	soldier->SetOrigin(soldier->GetWidth() / 2.0f, soldier->GetHeight());//중심 잡아주기
 
