@@ -58,7 +58,7 @@ void MainGame::initSystems()
 
 void MainGame::initShaders()
 {
-	_colorProgram.compileShaders("")
+	_colorProgram.compileShaders("");
 
 }
 

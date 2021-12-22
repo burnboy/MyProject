@@ -1,1 +1,13 @@
-﻿
+﻿  Error.cpp
+  GLSLProgram.cpp
+  main.cpp
+  MainGame.cpp
+d:\myproject\advanced game tutorial\advanced game tutorial\maingame.cpp(61): error C2660: 'GLSLProgram::compileShaders': 함수는 1개의 매개 변수를 사용하지 않습니다.
+  d:\myproject\advanced game tutorial\advanced game tutorial\glslprogram.h(12): note: 'GLSLProgram::compileShaders' 선언을 참조하십시오.
+d:\myproject\advanced game tutorial\advanced game tutorial\maingame.cpp(63): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.
+  Sprite.cpp
+d:\myproject\advanced game tutorial\advanced game tutorial\sprite.cpp(22): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\myproject\advanced game tutorial\advanced game tutorial\sprite.cpp(23): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\myproject\advanced game tutorial\advanced game tutorial\sprite.cpp(24): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\myproject\advanced game tutorial\advanced game tutorial\sprite.cpp(25): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
